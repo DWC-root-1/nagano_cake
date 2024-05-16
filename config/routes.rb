@@ -1,30 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  root to: 'public/homes#top'
-  get 'about' => 'public/homes#top'
-
-  resources :items, only: [:show, :index]
-
-  get 'customers/my_page'  => 'public/customers#show'
-  get 'customers/information/edit'  => 'public/customers#edit'
-  patch 'customers/information'  => 'public/customers#update'
-  get 'customers/unsubscribe'  => 'publick/customers#unsubscribe'
-  patch 'customers/withdraw' => 'public/customers#withdraw'
-
-  resources :cart_items, only: [:index, :update, :destroy, :create]
-  delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: :delete_all
-
-  get 'orders/new' => 'public/orders#new'
-  post 'orders/confirm' => 'public/orders#confirm'
-  get 'orders/complete' => 'public/orders#complete'
-  post 'orders' => 'public/orders#create'
-  get 'orders' => 'public/orders#index'
-  get 'orders/:id' => 'public/orders#show'
-
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
+  scope module: :public do
+    root to: 'homes#top'
+    get 'home/about' => 'homes#top', as: "about"
+    resources :items, only: [:show, :index]
+    get 'customers/my_page'  => 'customers#show', as: "my_page"
+    get 'customers/information/edit'  => 'customers#edit'
+    patch 'customers/information'  => 'customers#update'
+    get 'customers/unsubscribe'  => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: :delete_all
+    get 'orders/new' => 'orders#new'
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
+    post 'orders/confirm' => 'orders#create'
+    get 'orders' => 'orders#index'
+    get 'orders/:id' => '/orders#show'
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
   namespace :admin do
     resources :sessions, only: [:new, :create, :destroy]
     get 'admin' => 'admin#top'
@@ -35,5 +29,4 @@ Rails.application.routes.draw do
     patch 'orders/:id' => 'orders#update'
     patch 'order_details/:id' => 'order_details#update'
   end
-
 end
