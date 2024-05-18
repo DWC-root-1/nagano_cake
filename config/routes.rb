@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     root to: 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :genres, only: [:index, :create,  :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show,  :edit, :update]
     get 'orders/:id' => 'orders#show'
     patch 'orders/:id' => 'orders#update'
