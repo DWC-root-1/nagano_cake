@@ -12,26 +12,21 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    @address.id = current_customer.id
-    if  @address.save
-    puts "ここがエラー"
-      redirect_to addresses_path
-    else
-      @addresses = Address.all
-      redirect_to addresses_path
-    end
+    @address.customer_id = current_customer.id
+    @address.save
+    redirect_to addresses_path
   end
 
   def update
     @address = Address.find(params[:id])
     @address.update(address_params)
-    redirect_to addresses_path(address.id)
+    redirect_to addresses_path(@address.id)
   end
 
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to addresses_path(address.id)
+    redirect_to addresses_path(@address.id)
   end
 
   private
