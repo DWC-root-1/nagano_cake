@@ -1,0 +1,51 @@
+<header>
+  <% if request.fullpath.include?("/admin") %>
+    <!-- admin側のheaderを記述 -->
+      <ul class="navbar-nav ml-auto">
+        <li>
+        <%= link_to "商品一覧", "#", class:"btn" %>
+        </li>
+        <li>
+          <%= link_to "会員一覧", "#", class: "btn" %>
+        </li>
+        <li>
+          <%= link_to "注文履歴", "#", class: "btn" %>
+        </li>
+        <li>
+          <%= link_to "ジャンル一覧", "#", class: "btn" %>
+        </li>
+      </ul>
+  <% elsif customer_signed_in? %>
+    <!-- publicログイン状態のheaderを記述 -->
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <%= link_to "マイページ", "#", class:"btn" %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", "#", class:"btn" %>
+      </li>
+      <li>
+        <%= link_to "カート", "#", class:"btn" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", "#", class:"btn" %>
+      </li>
+    </ul>
+  <% else %>
+    <!-- ログインしていない場合のheaderを記述 -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "商品一覧", "#", class:"btn" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "新規登録", "#", class:"btn" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログイン", "#", class:"btn" %>
+      </li>
+    </ul>
+  <% end %>
+</header>
