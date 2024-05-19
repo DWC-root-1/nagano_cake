@@ -1,20 +1,37 @@
-<h1>会員一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="my-5">会員一覧</h3>
 
-<% @customers.each do |customer| %>
-<table>
-  <tr>
-    <td>会員ID</td>
-    <td>氏名</td>
-    <td>メールアドレス</td>
-    <td>ステータス</td>
-  </tr>
-  <tr>
-    <td><%= customer.id %></td>
-    <td><%= link_to "#{customer.last_name}#{customer.first_name}", admin_customer_path(customer) %></td>
-    <td><%= customer.email %></td>
-    <td><%= customer.is_active ? "有効" : "無効" %></td>
-  </tr>
-</table>
-<% end %>
+      <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to "#{customer.last_name}#{customer.first_name}", admin_customer_path(customer) %></td>
+            <td><%= customer.email %></td>
+            <% if customer.is_active %>
+              <td class="text-success"><b>有効</b></td>
+            <% else %>
+              <td class="text-secondary"><b>退会</b></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 <!--ページネーション実装予定-->
