@@ -1,0 +1,10 @@
+<% if request.fullpath.include? "/admin" %>
+　<!--admin側のheaderを返す-->
+<% else %>
+  <!--public側のheaderを返す-->
+<% end %>
+<% elsif public_signed_in? %>
+  <!--publicログイン状態の際に、表示したいheaderのメニューを記載-->
+<% else %>
+ <!--adminでもpublicでもログインしていない時に表示するheaderのメニューを記載-->
+<% end %>
