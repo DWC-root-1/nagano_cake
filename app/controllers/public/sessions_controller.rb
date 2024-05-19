@@ -10,14 +10,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-  end
+  # def create
+  #  super
+  # end
 
   # DELETE /resource/sign_out
-  def destroy
-    super
-  end
+  # def destroy
+  #  super
+  # end
 
   # protected
 
