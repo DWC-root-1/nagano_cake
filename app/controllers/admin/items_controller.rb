@@ -42,6 +42,6 @@ class Admin::ItemsController < ApplicationController
   def item_params
     genre_id = params[:item][:genre]  # フォームから送られてきたgenreのidを取得
     genre = Genre.find(genre_id)  # 取得したidを使ってGenreオブジェクトを取得
-    params.require(:item).permit(:item_image, :name, :introduction, :price, :is_active).merge(genre: genre)
+    params.require(:item).permit(:image, :name, :introduction, :price, :is_active).merge(genre: genre)
   end
 end
