@@ -1,6 +1,9 @@
-<h1>サインイン後遷移先画面</h1>
+<h1>注文履歴一覧</h1>
 
-<p>仮ログアウトボタン</p>
+<p>サインイン後遷移先画面</p>
 <li>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+</li>
+<li>
+  <%= link_to "会員一覧", admin_customers_path %>
 </li>
