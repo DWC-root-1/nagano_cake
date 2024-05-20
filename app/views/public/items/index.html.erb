@@ -1,0 +1,19 @@
+<h2>商品一覧</h2>
+
+<% @items.each do |item| %>
+  <% if item.item_image.attached? %>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.item_image, size: "80x80" %><br />
+    <% end %>
+  <% else %>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag 'no_image', size: "80x80" %><br />
+    <% end %>
+  <% end %>
+  <%= item.name %><br />
+  <!--- 以下の<br />は一時的なもの　Bootstrapを導入したら削除すること！-->
+  ¥<%= number_with_delimiter(item.price) %><br />
+<% end %>
+
+<!-- 縦：横＝２：４の構成で計８個が一画面の表示数 -->
+<!-- 8個目以降はkaminariでページを分ける -->

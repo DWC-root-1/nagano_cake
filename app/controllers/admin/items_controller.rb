@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @items = Item.all
   end
@@ -8,7 +8,7 @@ class Admin::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     if item.save
-      redirect_to admin_item_path(params[:id])
+      redirect_to admin_item_path(item.id)
     else
       render :new
     end
@@ -21,22 +21,27 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @genre = Genre.find(params[:genre_id])
+    @genres = Genre.all
   end
 
   def show
     @item = Item.find(params[:id])
-    @order_detail = Order_detail.find(params[:order_detail_id])
   end
 
   def update
     item = Item.find(params[:id])
-    item.update(item_params)
+    if item.update(item_params)
+      redirect_to admin_item_path(item.id)
+    else
+      render :edit
+    end
   end
 
   # ストロングパラメータ
   private
   def item_params
-    params.require(:item).permit(:item_image, :name, :introduction, :genre_id, :price, :is_active)
+    genre_id = params[:item][:genre]  # フォームから送られてきたgenreのidを取得
+    genre = Genre.find(genre_id)  # 取得したidを使ってGenreオブジェクトを取得
+    params.require(:item).permit(:item_image, :name, :introduction, :price, :is_active).merge(genre: genre)
   end
 end
