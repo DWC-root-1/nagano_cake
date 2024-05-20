@@ -1,1 +1,40 @@
-test
+<h3>ショッピングカート</h3>
+
+<%= link_to 'カートを空にする', "#", class: "btn btn-sm btn-danger" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if current_customer.cart_items.present? %>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>「写真だよ！」　<%= cart_item.item.name %></td>
+          <td><%= number_with_delimiter((cart_item.item.price * 1.1).floor) %></td>
+          <td><%= cart_item.amount %>　「変更ボタンだよ！」</td>
+          <td><%= number_with_delimiter(cart_item.item.price * cart_item.amount) %></td>
+          <td><%= link_to '削除する', "#", method: :delete, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <%= link_to '買い物を続ける', root_path, class: "btn btn-sm btn-primary" %>
+    </td>
+    <td>合計金額</td>
+    <td>合計ってどう作る？？？？</td>
+  </tr>
+</table>
+
+<%= link_to '情報入力に進む', "#", class: "btn btn-sm btn-success" %>
