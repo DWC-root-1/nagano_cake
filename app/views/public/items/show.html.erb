@@ -12,7 +12,7 @@
 
 <%= @item.introduction %><br />
 
-<%= number_with_delimiter((@item.price * 1.1).round) %>(税込)
+¥<%= number_with_delimiter((@item.price * 1.1).floor) %>(税込)
 
 <%= form_with model: @item, url: cart_items_path, method: :post do |f| %>
   <!-- カート内商品の数量(amount)を持ってくる -->

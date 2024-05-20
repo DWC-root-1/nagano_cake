@@ -1,7 +1,7 @@
 <header>
   <div class="container">
     <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
-    
+
       <% if request.fullpath.include?("/admin") %>
         <!-- admin側のheaderを記述 -->
           <ul class="navbar-nav ml-auto">
@@ -12,7 +12,7 @@
               <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-dark" %>
             </li>
             <li>
-              <%= link_to "注文履歴", admin_root, class:"btn btn-outline-dark" %>
+              <%= link_to "注文履歴", "#", class:"btn btn-outline-dark" %>
             </li>
             <li>
               <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-dark" %>
@@ -25,16 +25,16 @@
         <!-- publicログイン状態のheaderを記述 -->
         <ul class="navbar-nav ml-auto">
           <li>
-            <%= link_to "マイページ", my_page_path(current_user), class:"btn btn-outline-dark" %>
+            <%= link_to "マイページ", my_page_path(current_customer), class:"btn btn-outline-dark" %>
           </li>
           <li>
             <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
           </li>
           <li>
-            <%= link_to "カート", cart_items_path, class:"btn btn-outline-dark" %>
+            <%= link_to "カート", "#", class:"btn btn-outline-dark" %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, class:"btn btn-outline-dark" %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark" %>
           </li>
         </ul>
       <% else %>
@@ -47,7 +47,7 @@
             <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_customer_session_path, class:"btn btn-outline-dark" %>
+            <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
           </li>
           <li class="nav-item">
             <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>

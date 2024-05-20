@@ -12,7 +12,7 @@
   <% end %>
   <%= item.name %><br />
   <!--- 以下の<br />は一時的なもの　Bootstrapを導入したら削除すること！-->
-  <%= item.price %><br />
+  ¥<%= number_with_delimiter(item.price) %><br />
 <% end %>
 
 <!-- 縦：横＝２：４の構成で計８個が一画面の表示数 -->
