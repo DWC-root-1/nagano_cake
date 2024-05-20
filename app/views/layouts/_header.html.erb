@@ -23,10 +23,10 @@
           </ul>
       <% elsif customer_signed_in? %>
         <!-- publicログイン状態のheaderを記述 -->
-          <div>
+          <div class="mt-3 mr-5">
             ようこそ、<%= current_customer.last_name %>さん!
           </div>
-        <ul class="navbar-nav justify-content-end ">
+        <ul class="nav justify-content-end ">
           <li class="nav-item ml-5">
             <%= link_to "マイページ", my_page_path(current_customer), class:"btn btn-outline-dark" %>
           </li>
