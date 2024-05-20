@@ -1,0 +1,21 @@
+<% if @item.item_image.attached? %>
+  <%= link_to item_path(@item.id) do %>
+    <%= image_tag @item.item_image, size: "80x80" %><br />
+  <% end %>
+<% else %>
+  <%= link_to item_path(@item.id) do %>
+    <%= image_tag 'no_image', size: "80x80" %><br />
+  <% end %>
+<% end %>
+
+<h2><%= @item.name %></h2>
+
+<%= @item.introduction %><br />
+
+<%= number_with_delimiter((@item.price * 1.1).round) %>(税込)
+
+<%= form_with model: @item, url: cart_items_path, method: :post do |f| %>
+  <!-- カート内商品の数量(amount)を持ってくる -->
+  <!-- f.select -->
+  <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
+<% end %>
