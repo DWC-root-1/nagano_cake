@@ -21,40 +21,40 @@
               <td>（メイ）<%= f.text_field :first_name_kana %></td>
             </tr>
 
-             <tr>
-               <td>メールアドレス</td>
-               <td>　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-             </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td>　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
 
-             <tr>
-               <td>郵便番号(ハイフンなし)</td>
-               <td>　　　　<%= f.text_field :post_code %></td>
-             </tr>
+            <tr>
+              <td>郵便番号(ハイフンなし)</td>
+              <td>　　　　<%= f.text_field :post_code %></td>
+            </tr>
 
-             <tr>
-               <td>住所</td>
-               <td>　　　　<%= f.text_field :address %></td>
-             </tr>
+            <tr>
+              <td>住所</td>
+              <td>　　　　<%= f.text_field :address %></td>
+            </tr>
 
-             <tr>
-               <td>電話番号(ハイフンなし)</td>
-               <td>　　　　<%= f.text_field :telephone_number %></td>
-             </tr>
+            <tr>
+              <td>電話番号(ハイフンなし)</td>
+              <td>　　　　<%= f.text_field :telephone_number %></td>
+            </tr>
 
-             <tr>
-               <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
-               <td>　　　　<%= f.password_field :password, autocomplete: "new-password" %></td>
-             </tr>
+            <tr>
+              <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
+              <td>　　　　<%= f.password_field :password, autocomplete: "new-password" %></td>
+            </tr>
 
-             <tr>
-               <td>パスワード(確認用)</td>
-               <td>　　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-             </tr>
+            <tr>
+              <td>パスワード(確認用)</td>
+              <td>　　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            </tr>
 
-             <tr>
-               <td></td>
-               <td>　　　　<%= f.submit "新規会員登録" , class: "btn btn-success"%></td>
-             </tr>
+            <tr>
+              <td></td>
+              <td>　　　　<%= f.submit "新規会員登録" , class: "btn btn-success"%></td>
+            </tr>
 
           <% end %>
         </table>
