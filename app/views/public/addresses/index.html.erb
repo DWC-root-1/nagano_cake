@@ -3,8 +3,8 @@
     <div class="col">
       <h3 class="my-5">配送先登録/一覧</h3>
       <div class="col-sm-12 col-md-10 col-lg-8">
+        <%= form_with model: @address,url: addresses_path, method: :post do |f| %>
         <table class="table table-borderless">
-          <%= form_with model: @address,url: addresses_path, method: :post do |f| %>
             <tr>
               <td>
                 <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
@@ -32,9 +32,9 @@
                 <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
               </td>
             </tr>
-          <% end %>
           </div>
         </table>
+        <% end %>
 
         <table>
           <thead>
