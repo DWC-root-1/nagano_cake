@@ -1,21 +1,23 @@
-<h2>商品一覧</h2>
+<div class="container">
+  <h2>商品一覧</h2>
 
-<div class="d-flex flex-wrap">
-  <% @items.each do |item| %>
-    <% if item.image.attached? %>
-      <%= link_to item_path(item.id) do %>
-        <%= image_tag item.image, size: "80x80" %><br />
+  <div class="d-flex flex-wrap">
+    <% @items.each do |item| %>
+      <% if item.image.attached? %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image, size: "80x80" %><br />
+        <% end %>
+      <% else %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag 'no_image', size: "80x80" %><br />
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to item_path(item.id) do %>
-        <%= image_tag 'no_image', size: "80x80" %><br />
-      <% end %>
+      <%= item.name %><br />
+      <!--- 以下の<br />は一時的なもの　Bootstrapを導入したら削除すること！-->
+      ¥<%= number_with_delimiter(item.price) %><br />
     <% end %>
-    <%= item.name %><br />
-    <!--- 以下の<br />は一時的なもの　Bootstrapを導入したら削除すること！-->
-    ¥<%= number_with_delimiter(item.price) %><br />
-  <% end %>
-</div>
+  </div>
 
-<!-- 1ページ当たりの表示数が8個のペネトレーション設定 -->
-<%= paginate @items, per_page: 8 %>
+  <!-- 1ページ当たりの表示数が8個のペネトレーション設定 -->
+  <%= paginate @items, per_page: 8 %>
+</div>
