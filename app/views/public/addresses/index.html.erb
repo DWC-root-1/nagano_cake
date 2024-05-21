@@ -4,7 +4,7 @@
       <h3 class="my-5">配送先登録/一覧</h3>
       <div class="col-sm-12 col-md-10 col-lg-8">
         <%= form_with model: @address,url: addresses_path, method: :post do |f| %>
-        <table class="table table-borderless">
+          <table class="table table-borderless">
             <tr>
               <td>
                 <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
@@ -33,7 +33,7 @@
               </td>
             </tr>
           </div>
-        </table>
+          </table>
         <% end %>
 
         <table>
