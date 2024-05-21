@@ -1,1 +1,26 @@
-<h1>Topだよ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+     <h1>Topだよ</h1>
+    </div>
+    <div class-"col-9">
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
+            <div class="card m-2 p-1 card-hover">
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: "100x100" %>
+              <% else %>
+                <%= image_tag "no_image.jpg", size: "100x100" %>
+              <% end %>
+                <div class="card-body text-body">
+                  <h5 class="card-title text-primary"><%= item.name %></h5>
+                  <p class="card-text text-primary">¥<%= item.price %></p>
+                </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div
+  </div>
+</div>
