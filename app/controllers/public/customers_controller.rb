@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
    @customer.update(is_active: false)
    reset_session
    # flash[:notice] = "退会処理を実行しました"
-   redirect_to about_path
+   redirect_to root_path
   end
 
   def unsubscribe

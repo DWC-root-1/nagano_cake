@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3 class="my-5">管理者ログイン</h3>
+      <h3 class="col-3 my-5 bg-light">管理者ログイン</h3>
 
       <div class="col-sm-12 col-md-10 col-lg-8 px-sm-0 mx-auto">
         <table class="table table-borderless">
@@ -9,7 +9,7 @@
 
             <tr>
               <td><%= f.label :メールアドレス %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %></td>
             </tr>
 
             <tr>
@@ -19,7 +19,7 @@
 
             <tr>
               <td></td>
-              <td><%= f.submit "ログイン", class:"btn btn-primary px-4" %></td>
+              <td><%= f.submit "ログイン", class:"btn btn-primary px-5" %></td>
             </tr>
 
           <% end %>

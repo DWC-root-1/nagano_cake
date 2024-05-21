@@ -4,7 +4,7 @@
       <h3>商品一覧</h3>
     </div>
     <div class="col-10 text-right">
-      <%= link_to '+', new_admin_item_path, class: 'btn btn-outline-dark rounded-circle ml-auto shadow' %>
+      <%= link_to '+', new_admin_item_path, class: "btn btn-outline-dark rounded-circle ml-auto shadow" %>
     </div>
   </div>
   <div class="row">
@@ -34,8 +34,8 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-      
     
-  <!-- 1ページ毎の表示数は10個のため、kaminariでページを分ける -->
+    <!-- 1ページ当たりの表示数が10個のペネトレーション設定 -->
+    <%= paginate @items %>
+  </div>
 </div>

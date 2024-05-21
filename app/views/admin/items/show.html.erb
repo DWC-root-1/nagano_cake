@@ -1,38 +1,46 @@
 <div class="container">
-  <h2>商品詳細</h2>
-  
-  <% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  
-  <table>
-    <tr>
-      <td>商品名</td>
-      <td><%= @item.name %></td>
-    </tr>
-    <tr>
-      <td>商品説明</td>
-      <td><%= @item.introduction %></td>
-    </tr>
-    <tr>
-      <td>ジャンル</td>
-      <td><%= @item.genre.name %></td>
-    </tr>
-    <tr>
-      <td>税込価格<br />(税抜価格)</td>
-      <td><%= number_with_delimiter((@item.price * 1.1).floor) %>（<%= number_with_delimiter(@item.price) %>）円</td>
-    </tr>
-    <tr>
-      <td>販売ステータス</td>
-      <% if @item.is_active? %>
-        <td>販売中</td>
+  <div class="row">
+    <div class="col">
+      <h2 class="my-3">商品詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "200x200" %>
       <% else %>
-        <td>販売停止中</td>
+        <%= image_tag 'no_image', size: "200x200" %>
       <% end %>
-    </tr>
-  </table>
-  
-  <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" %>
+    </div>
+    <div class="col">
+      <table>
+        <tr>
+          <td>商品名</td>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格<br />(税抜価格)</td>
+          <td><%= number_with_delimiter((@item.price * 1.1).floor) %>（<%= number_with_delimiter(@item.price) %>）円</td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <% if @item.is_active? %>
+            <td class="text-success"><b>販売中</b></td>
+          <% else %>
+            <td class="text-danger"><b>販売停止中</b></td>
+          <% end %>
+        </tr>
+      </table>
+
+      <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
 </div>

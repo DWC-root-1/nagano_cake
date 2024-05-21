@@ -1,6 +1,6 @@
 <h3>ショッピングカート</h3>
 
-<%= link_to 'カートを空にする', "#", class: "btn btn-sm btn-danger" %>
+<%= link_to 'カートを空にする', "#", "data-confirm" => "カート内にある全ての商品が削除されてしまいます。\n本当に削除してもよろしいでしょうか？" , class: "btn btn-sm btn-danger" %>
 
 <table>
   <thead>
@@ -16,11 +16,17 @@
     <% if current_customer.cart_items.present? %>
       <% @cart_items.each do |cart_item| %>
         <tr>
-          <td>「写真だよ！」　<%= cart_item.item.name %></td>
+          <td><%= image_tag cart_item.item.image, size: "30x30" %> 　<%= cart_item.item.name %></td>
           <td><%= number_with_delimiter((cart_item.item.price * 1.1).floor) %></td>
-          <td><%= cart_item.amount %>　「変更ボタンだよ！」</td>
+          <td>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+               <!--f.select "#" -->
+               <%= cart_item.amount %>
+              <%= f.submit '変更', class: "btn btn-sm btn-success" %>
+            <% end %>
+          </td>
           <td><%= number_with_delimiter(cart_item.item.price * cart_item.amount) %></td>
-          <td><%= link_to '削除する', "#", method: :delete, class: "btn btn-sm btn-danger" %></td>
+          <td><%= link_to '削除する', cart_item_path(cart_item.item_id), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-sm btn-danger" %></td>
         </tr>
       <% end %>
     <% end %>
@@ -33,7 +39,11 @@
       <%= link_to '買い物を続ける', root_path, class: "btn btn-sm btn-primary" %>
     </td>
     <td>合計金額</td>
-    <td>合計ってどう作る？？？？</td>
+    <% total_price = 0 %>
+    <% @cart_items.each do |cart_item| %>
+      <% total_price += cart_item.item.price * cart_item.amount %>
+    <% end %>
+    <td><%= number_with_delimiter(total_price) %></td>
   </tr>
 </table>
 
