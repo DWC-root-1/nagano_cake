@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  
+
   def top
   end
 
@@ -8,5 +8,5 @@ class Public::HomesController < ApplicationController
 
   def destroy
   end
-  
+
 end
