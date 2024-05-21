@@ -1,6 +1,6 @@
 <h2>商品一覧</h2>
 
-<div class="d-flex flex-nowrap">
+<div class="d-flex flex-wrap">
   <% @items.each do |item| %>
     <% if item.image.attached? %>
       <%= link_to item_path(item.id) do %>
