@@ -21,13 +21,9 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-
-    get 'orders/new' => 'orders#new'
+    resources :orders, only: [:index, :new, :create, :show]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
-    post 'orders/confirm' => 'orders#create'
-    get 'orders' => 'orders#index'
-    get 'orders/:id' => '/orders#show'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :admin do
