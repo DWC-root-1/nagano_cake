@@ -3,21 +3,21 @@
 
   <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
-      <% if item.image.attached? %>
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.image, size: "80x80" %><br />
+      <div class="mr-3">
+        <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "220x150" %><br />
+          <% else %>
+            <%= image_tag 'no_image', size: "220x150" %><br />
+          <% end %>
+          <%= item.name %><br />
         <% end %>
-      <% else %>
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag 'no_image', size: "80x80" %><br />
-        <% end %>
-      <% end %>
-      <%= item.name %><br />
-      <!--- 以下の<br />は一時的なもの　Bootstrapを導入したら削除すること！-->
-      ¥<%= number_with_delimiter(item.price) %><br />
+
+        ¥<%= number_with_delimiter(item.price) %>
+      </div>
     <% end %>
   </div>
 
   <!-- 1ページ当たりの表示数が8個のペネトレーション設定 -->
-  <%= paginate @items, per_page: 8 %>
+  <%= paginate @items %>
 </div>
