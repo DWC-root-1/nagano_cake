@@ -1,6 +1,6 @@
 <h3>ショッピングカート</h3>
 
-<%= link_to 'カートを空にする', "#", data: { confirm: "カート内にある全ての商品が削除されてしまいます。\n本当に削除してもよろしいでしょうか？" }, class: "btn btn-sm btn-danger" %>
+<%= link_to 'カートを空にする', "#", "data-confirm" => "カート内にある全ての商品が削除されてしまいます。\n本当に削除してもよろしいでしょうか？" , class: "btn btn-sm btn-danger" %>
 
 <table>
   <thead>
@@ -26,7 +26,7 @@
             <% end %>
           </td>
           <td><%= number_with_delimiter(cart_item.item.price * cart_item.amount) %></td>
-          <td><%= link_to '削除する', cart_item_path(cart_item.item_id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+          <td><%= link_to '削除する', cart_item_path(cart_item.item_id), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-sm btn-danger" %></td>
         </tr>
       <% end %>
     <% end %>
