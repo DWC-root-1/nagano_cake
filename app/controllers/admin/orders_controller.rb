@@ -22,4 +22,3 @@ class Admin::OrdersController < ApplicationController
     params.require(:order).permit(:customer_id, :payment_method, :post_code, :address, :name, :shipping_cost, :total_payment, :status)
   end
 end
-
