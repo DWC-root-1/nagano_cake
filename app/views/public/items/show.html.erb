@@ -1,10 +1,10 @@
 <% if @item.image.attached? %>
   <%= link_to item_path(@item.id) do %>
-    <%= image_tag @item.image, size: "80x80" %><br />
+    <%= image_tag @item.image, size: "330x220" %><br />
   <% end %>
 <% else %>
   <%= link_to item_path(@item.id) do %>
-    <%= image_tag 'no_image', size: "80x80" %><br />
+    <%= image_tag 'no_image', size: "330x220" %><br />
   <% end %>
 <% end %>
 
