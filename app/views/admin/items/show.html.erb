@@ -6,11 +6,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
+      <%= image_tag @item.get_item_image(200, 200) %>
     </div>
     <div class="col">
       <table>

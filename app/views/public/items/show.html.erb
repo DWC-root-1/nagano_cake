@@ -1,18 +1,10 @@
-<% if @item.image.attached? %>
-  <%= link_to item_path(@item.id) do %>
-    <%= image_tag @item.image, size: "330x220" %><br />
-  <% end %>
-<% else %>
-  <%= link_to item_path(@item.id) do %>
-    <%= image_tag 'no_image', size: "330x220" %><br />
-  <% end %>
-<% end %>
+<%= image_tag @item.get_item_image(330, 220) %><br />
 
 <h2><%= @item.name %></h2>
 
 <%= @item.introduction %><br />
 
-¥<%= number_with_delimiter((@item.price * 1.1).floor) %>(税込)
+¥<%= number_with_delimiter(@item.with_tax_price) %>(税込)
 
 <% if @item.is_active? %>
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
