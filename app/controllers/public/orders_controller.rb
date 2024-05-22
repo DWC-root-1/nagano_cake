@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cartitem_nill, only: [:new, :create]
 
   def new
     @order = Order.new
@@ -18,12 +19,10 @@ class Public::OrdersController < ApplicationController
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address] =="2"
+    elsif params[:order][:select_address] == "2"
       @order.customer_id = current_customer.id
     end
     @cart_items = current_customer.cart_items
-    @order_new = Order.new(order_params)
-    render 'confirm'
   end
 
   def create
@@ -50,6 +49,11 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+  end
+
+  def show
+    @order_details = OrderDetail.where(order_id: params[:id])
+    @order = Order.find(params[:id])
   end
 
   private
