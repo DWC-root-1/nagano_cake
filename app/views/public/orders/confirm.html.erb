@@ -11,7 +11,7 @@
 
   <tr>
     <td>
-      <%= image_tag cart_item.item.image, size: "90x90" %><%= cart_item.item.name %>
+      <%= image_tag cart_item.item.get_item_image(90, 90) %><%= cart_item.item.name %>
     </td>
     <td><%= cart_item.item.with_tax_price %></td>
     <td><%= cart_item.amount %></td>

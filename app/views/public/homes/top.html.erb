@@ -12,15 +12,11 @@
         <% @items.each do |item| %>
           <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
             <div class="card m-2 p-1 card-hover">
-              <% if item.image.attached? %>
-                <%= image_tag item.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag "no_image.jpg", size: "200x200" %>
-              <% end %>
-                <div class="card-body text-body">
-                  <h5 class="card-title text-primary"><%= item.name %></h5>
-                  <p class="card-text text-primary">¥<%= item.price %></p>
-                </div>
+              <%= image_tag item.get_item_image(200, 200) %>
+              <div class="card-body text-body">
+                <h5 class="card-title text-primary"><%= item.name %></h5>
+                <p class="card-text text-primary">¥<%= item.price %></p>
+              </div>
             </div>
           <% end %>
         <% end %>
