@@ -1,7 +1,11 @@
 <div class="container">
-  <div class="row">
-    <%= image_tag "img1.jpg", size: "100x100" %>
-    <h1>テキスト</h1>
+  <div class="row my-5 justify-content-center">
+    <div class="card text-center">
+      <%= image_tag "img1.jpg", size: "800x400",style: "opacity: 0.5", class: "mx-auto" %>
+      <div class="card-img-overlay">
+        <h1 class="text-white" style="background-color: rgba(0, 0, 0, 0.75);">topだよ</h1>
+      </div>
+    </div>
   </div>
     <div class-"row">
       <div class="d-flex flex-wrap">
@@ -9,9 +13,9 @@
           <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
             <div class="card m-2 p-1 card-hover">
               <% if item.image.attached? %>
-                <%= image_tag item.image, size: "100x100" %>
+                <%= image_tag item.image, size: "200x200" %>
               <% else %>
-                <%= image_tag "no_image.jpg", size: "100x100" %>
+                <%= image_tag "no_image.jpg", size: "200x200" %>
               <% end %>
                 <div class="card-body text-body">
                   <h5 class="card-title text-primary"><%= item.name %></h5>
