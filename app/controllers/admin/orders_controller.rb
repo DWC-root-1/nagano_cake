@@ -8,12 +8,6 @@ class Admin::OrdersController < ApplicationController
 
   def update
    	@order = Order.find(params[:id])
-   	@order.update(order_params)
-    redirect_to request.referer
-  end
-
-  def update
-   	@order = Order.find(params[:id])
     @order.update(order_params)
     order_detail = OrderDetail.where(order_id: params[:id])
     if params[:order][:status] == "confirm_payment"
