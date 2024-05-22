@@ -5,11 +5,7 @@
     <% @items.each do |item| %>
       <div class="mr-3">
         <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
-          <% if item.image.attached? %>
-            <%= image_tag item.image, size: "220x150" %><br />
-          <% else %>
-            <%= image_tag 'no_image', size: "220x150" %><br />
-          <% end %>
+          <%= image_tag item.get_item_image(220, 150) %><br />
           <%= item.name %><br />
         <% end %>
 
