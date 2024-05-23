@@ -2,25 +2,32 @@
   <div class="row my-5 justify-content-center">
     <div class="card text-center">
       <%= image_tag "img1.jpg", size: "800x400",style: "opacity: 0.5", class: "mx-auto" %>
-      <div class="card-img-overlay">
-        <h1 class="text-white" style="background-color: rgba(0, 0, 0, 0.75);">topだよ</h1>
+      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        <h3 class="text-white" style="background-color: rgba(0, 0, 0, 0.75);">
+          ようこそ、ながのCAKEへ！<br/>
+          このサイトは、ケーキ販売のECサイトになります。<br/>
+          会員でない方も商品の閲覧はできますが、<br/>
+          購入には会員登録が必要になります。 
+        </h3>
       </div>
     </div>
   </div>
-    <div class-"row">
-      <div class="d-flex flex-wrap">
-        <% @items.each do |item| %>
-          <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
-            <div class="card m-2 p-1 card-hover">
-              <%= image_tag item.get_item_image(200, 200) %>
-              <div class="card-body text-body">
-                <h5 class="card-title text-primary"><%= item.name %></h5>
-                <p class="card-text text-primary">¥<%= item.price %></p>
-              </div>
+  <div class-"row">
+    <div class="d-flex flex-wrap">
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
+          <div class="card m-2 p-1 card-hover">
+            <%= image_tag item.get_item_image(200, 200) %>
+            <div class="card-body text-body">
+              <h5 class="card-title text-primary"><%= item.name %></h5>
+              <p class="card-text text-primary">¥<%= item.price %></p>
             </div>
-          <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
+    </div>
+    <div class="row py-3 justify-content-end">
+      <%= link_to "全ての商品を見る>", items_path %>
     </div>
   </div>
 </div>
