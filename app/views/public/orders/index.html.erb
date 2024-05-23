@@ -1,5 +1,5 @@
 <h3>注文履歴一覧</h3>
-<table>
+<table class="table">
   <tr>
     <td>注文日</td>
     <td>配送先</td>
@@ -17,9 +17,15 @@
         <%= order.address %></br>
         <%= order.name %>
       </td>
+
       <td>
-         商品名だよ！！！
+        <% order.order_details.each do |order_detail| %>
+        <ul class="list-unstyled">
+          <li><%= order_detail.item.name %></li>
+        </ul>
+        <% end %>
       </td>
+
       <td><%= number_with_delimiter(order.total_payment) %>円</td>
       <td><%= order.status_i18n %></td>
       <td><%= link_to '表示する', order_path(order), class:"btn btn-primary px-4"  %></td>
