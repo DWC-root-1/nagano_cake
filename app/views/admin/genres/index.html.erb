@@ -1,5 +1,6 @@
 <%= flash[:notice] %>
 <h1>ジャンル一覧・追加</h1>
+<%= render 'layouts/error', object: @genre %>
 <div>
   <div>
   <%= form_with model: @genre,url: admin_genres_path do |f| %>
