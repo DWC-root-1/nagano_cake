@@ -1,17 +1,32 @@
-<%= image_tag @item.get_item_image(330, 220) %><br />
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-auto">
+      <%= image_tag @item.get_item_image(350, 250) %><br />
+    </div>
 
-<h2><%= @item.name %></h2>
+    <div class="col ml-4">
+      <h2><b><%= @item.name %></b></h2>
 
-<%= @item.introduction %><br />
+      <div class="my-4">
+        <%= @item.introduction %>
+      </div>
 
-¥<%= number_with_delimiter(@item.with_tax_price) %>(税込)
+      <div class="d-flex" style="align-items: end;">
+        <h4 class="mb-0 mt-4">¥<%= number_with_delimiter(@item.with_tax_price) %></h4>
+        <p class="mb-0 ml-2 mt-4">(税込)</p>
+      </div>
 
-<% if @item.is_active? %>
-  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <div class="mt-5">
+        <% if @item.is_active? %>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :amount, *[1..10], include_blank: '個数選択' %>
+              <%= f.submit 'カートに入れる', class: 'btn btn-success ml-5' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.select :amount, *[1..10], include_blank: '個数選択' %>
-    <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
 
-  <% end %>
-<% end %>
