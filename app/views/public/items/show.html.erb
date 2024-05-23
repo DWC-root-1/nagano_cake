@@ -6,7 +6,11 @@
     <div class="col-7 offset-1">
       <h2 style="font-weight: bold;"><%= @item.name %></h2>
       <p style="font-size: 20px;"><%= @item.introduction %></p><br />
-      <p style="font-size: 25px; font-weight: bold;">¥<%= number_with_delimiter(@item.with_tax_price) %>(税込) </p>
+      
+      <div class="d-flex align-items-end">
+        <h4 class="mb-0">¥<%= number_with_delimiter(@item.with_tax_price) %></h4>
+        <p class="mb-0">(税込)</p>
+      </div>
     </div>
   </div>
   <div class="row justify-content-end">
