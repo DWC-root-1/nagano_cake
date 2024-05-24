@@ -1,22 +1,36 @@
-<h3>注文履歴一覧</h3>
-<table class="table">
-  <tr>
-    <td>購入日時</td>
-    <td>購入者</td>
-    <td>注文個数</td>
-    <td>注文ステータス</td>
-  </tr>
+<div class="container">
+  <div class="row py-4 pr-3">
+    <div class="col-3 offset-1 bg-light text-center">
+      <h3>注文履歴一覧</h3>
+    </div>
+  </div>
 
-  <% @orders.each do |order| %>
-    <tr>
-      <td>
-        <%= link_to admin_order_path(order) do %>
-          <%= l order.created_at %>
-        <% end %>
-      </td>
-      <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-      <td><%= order.order_details.sum(:amount) %></td>
-      <td><%= order.status_i18n %></td>
-    </tr>
-  <% end %>
-</table>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <table class='table table-hover table-inverse border-bottom'>
+          <tr class="bg-light">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order),  style: "color: black; border-bottom: solid 1px" do %>
+                  <%= l order.created_at %>
+                <% end %>
+              </td>
+              <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td><%= order.order_details.sum(:amount) %></td>
+              <td><%= order.status_i18n %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  <!-- 1ページ当たりの表示数が10個のペネトレーション設定 -->
+  <%= paginate @orders %>
+</div>

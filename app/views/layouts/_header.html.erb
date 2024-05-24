@@ -1,61 +1,68 @@
 <header>
   <div class="container">
-    <a class="navbar-brand" href="/"><span class="h1 text-dark">NAGANO CAKE</span></a>
+    <div class="row border-bottom">
+      <div class="col d-flex mt-3">
+        <a class="navbar-brand" href="/"><span class="h1 text-dark">NAGANO CAKE</span></a>
 
-      <% if request.fullpath.include?("/admin") %>
-        <!-- admin側のheaderを記述 -->
-          <ul class="nav justify-content-end">
-            <li class="nav-item ml-5">
+        <% if admin_signed_in? %>
+          <!-- 4行目のcolに対する</div> -->
+      </div>
+          <!-- admin側のheaderを記述 -->
+          <ul class="nav justify-content-end my-4">
+            <li class="nav-item ml-4">
             <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-dark" %>
             </li>
-            <li class="nav-item ml-5">
+            <li class="nav-item ml-4">
               <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-dark" %>
             </li>
-            <li class="nav-item ml-5">
+            <li class="nav-item ml-4">
               <%= link_to "注文履歴", admin_root_path, class:"btn btn-outline-dark" %>
             </li>
-            <li class="nav-item ml-5">
+            <li class="nav-item ml-4">
               <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-dark" %>
             </li>
-            <li class="nav-item ml-5">
+            <li class="nav-item ml-4">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-dark" %>
             </li>
           </ul>
-      <% elsif customer_signed_in? %>
+        <% elsif customer_signed_in? %>
         <!-- publicログイン状態のheaderを記述 -->
-          <div class="mt-3 mr-5">
-            ようこそ、<%= current_customer.last_name %>さん!
-          </div>
-        <ul class="nav justify-content-end ">
-          <li class="nav-item ml-5">
-            <%= link_to "マイページ", my_page_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "カート", cart_items_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark" %>
-          </li>
-        </ul>
-      <% else %>
-        <!-- ログインしていない場合のheaderを記述 -->
-        <ul class="nav justify-content-end">
-          <li class="nav-item ml-5">
-            <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>
-          </li>
-        </ul>
-      <% end %>
+          <div class="ml-5 mt-4">ようこそ、<%= current_customer.last_name %>さん!</div>
+      <!-- 4行目のcolに対する</div> -->
+      </div>
+          <ul class="nav justify-content-end my-4">
+            <li class="nav-item ml-4">
+              <%= link_to "マイページ", my_page_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "カート", cart_items_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark" %>
+            </li>
+          </ul>
+        <% else %>
+      <!-- 4行目のcolに対する</div> -->
+      </div>
+          <!-- ログインしていない場合のheaderを記述 -->
+          <ul class="nav justify-content-end my-4">
+            <li class="nav-item ml-4">
+              <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
+            </li>
+            <li class="nav-item ml-4">
+              <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
     </div>
 </header>
