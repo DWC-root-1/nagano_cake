@@ -6,7 +6,6 @@
   </div>
 </div>
       <div class="col-sm-12 col-md-10 col-lg-8">
-        <%= render 'layouts/error', object: @address %>
         <%= form_with model: @address,url: addresses_path, method: :post do |f| %>
           <table class="table table-borderless">
             <tr>

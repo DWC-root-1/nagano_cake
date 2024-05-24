@@ -18,7 +18,6 @@ class Customer < ApplicationRecord
     validates :telephone_number, presence: true
     validates :email, presence: true
     validates :encrypted_password, presence: true
-    validates :is_active, presence: true
   end
 
 end
