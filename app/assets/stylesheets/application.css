@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+.pagination span {
+  margin: 0 0.5rem 3rem;
+}
+
 #cart_item_amount {
   padding: 7px 20px;
   margin-right: 20px;

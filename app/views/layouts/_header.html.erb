@@ -11,7 +11,7 @@
         <% if admin_signed_in? %>
       <!-- 4行目のcolに対する</div> -->
       </div>
-        <div class="col-6">
+        <div class="col-7">
           <!-- admin側のheaderを記述 -->
           <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
@@ -72,7 +72,7 @@
           <% end %>
 
           <!-- 検索機能なしの検索窓 -->
-          <div class="search offset-6 mb-3">
+          <div class="search offset-7 mb-3">
             <%= form_with(url: "#", scope: :post, local: true) do |f| %>
               <%= f.text_field :search, placeholder: 'Search', class: "w-100" %>
               <% f.submit %>
