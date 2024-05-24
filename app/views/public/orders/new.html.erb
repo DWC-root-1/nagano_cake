@@ -4,10 +4,10 @@
       <h3 class="col-3 my-4 bg-light text-center">注文情報入力</h3>
     </div>
   </div>
- 
+
   <div class="row">
     <div class="col">
-      <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
+      <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
         <div class="ml-4 mb-3">
           <b style="font-size:22px;">支払方法</b>
           <div class="ml-4">
