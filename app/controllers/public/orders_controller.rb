@@ -45,6 +45,7 @@ class Public::OrdersController < ApplicationController
       @cart_items = current_customer.cart_items
       @shipping_cost = 800
       @total_price = 0
+      flash.now[:alert] = "注文を確定できませんでした。"
       render 'confirm'
     end
   end

@@ -6,13 +6,14 @@
   </div>
   <div class="row">
     <div class="col-8">
-      <%= render 'layouts/error', object: @order %>
+
       <table class="table-bordered">
         <tr class="bg-light">
           <td scope="col" style="width: 30%;">商品名　　　　　　　　　　　　　　　　　　　　　　　　　</td>
           <td scope="col" style="width: 20%;">単価　　</td>
           <td scope="col" style="width: 20%;">数量　　</td>
           <td scope="col" style="width: 20%;">小計　　</td>
+
         </tr>
 
         <% @total_price = 0 %>

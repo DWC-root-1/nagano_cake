@@ -12,6 +12,7 @@ class Admin::OrderDetailsController < ApplicationController
     if is_all_order_details_making_completed(order)
       order.update(status:"preparing_ship")
     end
+    flash[:notice] = "製作ステータスを変更しました。"
     redirect_to request.referer
   end
 

@@ -13,6 +13,7 @@ class Admin::OrdersController < ApplicationController
     if params[:order][:status] == "confirm_payment"
       order_detail.update(making_status:"waiting_manufacture")
     end
+    flash[:notice] = "注文ステータスを変更しました。"
     redirect_to request.referer
   end
 
