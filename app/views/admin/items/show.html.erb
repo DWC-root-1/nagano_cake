@@ -8,26 +8,26 @@
     <div class="col-4 ml-5">
       <%= image_tag @item.get_item_image(320, 230) %>
     </div>
-    <div class="col-6 ml-3">
+    <div class="col-6">
       <table>
         <tr>
-          <td class="col-3 align-top">商品名</td>
+          <td class="col-4 align-top">商品名</td>
           <td><%= @item.name %></td>
         </tr>
         <tr>
-          <td class="col-3align-top">商品説明</td>
+          <td class="col-4 align-top">商品説明</td>
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td class="col-3align-top">ジャンル</td>
+          <td class="col-4 align-top">ジャンル</td>
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <td class="col-3align-top">税込価格<br />(税抜価格)</td>
+          <td class="col-4 align-top">税込価格<br />(税抜価格)</td>
           <td><%= number_with_delimiter(@item.with_tax_price) %>（<%= number_with_delimiter(@item.price) %>）円</td>
         </tr>
         <tr>
-          <td class="col-3align-top">販売ステータス</td>
+          <td class="col-4 align-top">販売ステータス</td>
           <% if @item.is_active? %>
             <td class="text-success"><b>販売中</b></td>
           <% else %>
