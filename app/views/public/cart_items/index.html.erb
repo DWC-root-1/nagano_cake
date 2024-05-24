@@ -1,9 +1,7 @@
 <div class="container">
  <div class="row my-4">
    <div class="col-4 bg-light text-center">
-
     <h3>ショッピングカート </h3>
-
    </div>
    <div class="col-8 text-right">
     <%= link_to 'カートを空にする', destroy_all_cart_items_path , method: :delete , "data-confirm" => "カート内にある全ての商品が削除されます。\n本当に削除しますか？" , class: "btn btn-sm btn-danger" %>
@@ -12,11 +10,11 @@
   <table class="table-bordered">
     <thead>
       <tr>
-        <th scope="col" style="width: 30%;">商品名</th>
-        <th scope="col" style="width: 20%;">単価(税込)</th>
-        <th scope="col" style="width: 20%;">数量</th>
-        <th scope="col" style="width: 20%;">小計</th>
-        <th scope="col" style="width: 20%;"></th>
+        <th scope="col" style="width: 30%;">商品名　　　　　　　　　　　　　　　　　　　　　　　</th>
+        <th scope="col" style="width: 20%;">単価(税込)　　　</th>
+        <th scope="col" style="width: 20%;">数量　　</th>
+        <th scope="col" style="width: 20%;">小計　　　　</th>
+        <th scope="col" style="width: 20%;">　　　　　</th>
       </tr>
     </thead>
     <tbody>

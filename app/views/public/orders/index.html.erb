@@ -1,34 +1,38 @@
-<h3>注文履歴一覧</h3>
-<table class="table">
-  <tr>
-    <td>注文日</td>
-    <td>配送先</td>
-    <td>注文商品</td>
-    <td>支払金額</td>
-    <td>注文ステータス</td>
-    <td>注文詳細</td>
-  </tr>
-
-  <% @orders.each do |order| %>
+<div class="container my-3">
+  <div class="col-4 bg-light text-center">
+    <h3>注文履歴一覧</h3>
+  </div>
+  <table class="table-bordered">
     <tr>
-      <td><%= l order.created_at %></td>
-      <td>
-        〒<%= order.post_code %></br>
-        <%= order.address %></br>
-        <%= order.name %>
-      </td>
-
-      <td>
-        <% order.order_details.each do |order_detail| %>
-        <ul class="list-unstyled">
-          <li><%= order_detail.item.name %></li>
-        </ul>
-        <% end %>
-      </td>
-
-      <td><%= number_with_delimiter(order.total_payment) %>円</td>
-      <td><%= order.status_i18n %></td>
-      <td><%= link_to '表示する', order_path(order), class:"btn btn-primary px-4"  %></td>
+      <td>注文日　　　　　</td>
+      <td>配送先　　　　　　　　　　　　　　　　　　　　　　</td>
+      <td>注文商品　　　　</td>
+      <td>支払金額　　</td>
+      <td>注文ステータス　　</td>
+      <td>注文詳細　　　</td>
     </tr>
-  <% end %>
-</table>
+  
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= l order.created_at %></td>
+        <td>
+          〒<%= order.post_code %></br>
+          <%= order.address %></br>
+          <%= order.name %>
+        </td>
+  
+        <td>
+          <% order.order_details.each do |order_detail| %>
+          <ul class="list-unstyled">
+            <li><%= order_detail.item.name %></li>
+          </ul>
+          <% end %>
+        </td>
+  
+        <td><%= number_with_delimiter(order.total_payment) %>円</td>
+        <td><%= order.status_i18n %></td>
+        <td><%= link_to '表示する', order_path(order), class:"btn btn-primary px-4"  %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
