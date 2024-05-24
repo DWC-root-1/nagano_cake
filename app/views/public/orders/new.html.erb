@@ -4,12 +4,12 @@
       <h3 class="col-3 my-4 bg-light text-center">注文情報入力</h3>
     </div>
   </div>
-
+ 
   <div class="row">
     <div class="col">
       <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
         <div class="ml-4 mb-3">
-          <b>支払方法</b>
+          <b style="font-size:22px;">支払方法</b>
           <div class="ml-4">
             <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true  %>
             <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="ml-4">
-          <b>お届け先</b>
+          <b style="font-size: 22px;">お届け先</b>
           <div class="ml-4 mb-3">
             <%= f.radio_button :select_address, 0, checked: true  %>
             <%= f.label :address, "ご自身の住所" %>
