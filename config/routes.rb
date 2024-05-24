@@ -32,7 +32,7 @@ Rails.application.routes.draw do
         get 'complete'
         post 'confirm'
       end
-    get "seach" => "searches#search"
+    get "search" => "searches#search"
     end
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
@@ -46,5 +46,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
-  get "seach" => "searches#search"
+  get "search" => "searches#search"
 end

@@ -1,2 +1,36 @@
-<h1>Admin::Search#search</h1>
-<p>Find me in app/views/admin/search/search.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="d-flex mb-4" style="align-items: end;">
+        <h2 class="mb-0"><b>商品一覧</b></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <% if @items.present? %>
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+        <div class="mr-2">
+            <%= image_tag item.get_item_image(260, 180), class: "mb-2" %><br />
+            <div class="mb-2">
+              <%= item.name.truncate(13) %>
+            </div>
+
+            <div class="mb-2">
+              ¥<%= number_with_delimiter(item.price) %>
+            </div>
+            <div>
+              <%= link_to "編集する", edit_admin_item_path(item), class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% else %>
+      <div>アイテムが見つかりませんでした。</div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
