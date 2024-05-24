@@ -35,7 +35,7 @@
             <%= f.label :address, "登録済住所から選択" %></br>
             <div class="ml-4">
               <!-- セレクトボックスの横幅が広がらん! なんでや〜!! -->
-              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), class: "mb-3", style: "width: 200%" %>
+              <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display), class: "mb-3", style: "width: 200%" %>
             </div>
           </div>
 
