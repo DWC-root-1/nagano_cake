@@ -2,12 +2,12 @@
   <div class="row py-4 pr-3">
     <div class="col-3 offset-1 bg-light text-center">
       <h3>ジャンル編集</h3>
-      <%= render 'layouts/error', object: @genre %>
     </div>
   </div>
 
   <div class="row">
     <div class="col py-4 ml-5">
+      <%= render 'layouts/error', object: @genre %>
       <%= form_with model: @genre,url: admin_genre_path(@genre), method: :patch do |f| %>
         <%= f.label :name, "ジャンル名", class: "ml-2" %>
         <%= f.text_field :name, placeholder: 'ジャンル名', class: "mx-5 w-25" %>

@@ -15,9 +15,11 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
+      flash[:notice] = "商品を追加しました。"
       redirect_to cart_items_path
     else
       @cart_items = current_customer.cart_items.all
+      flash.now[:alert] = "商品を追加できませんでした。個数を選択してください。"
       render 'index'
     end
   end
