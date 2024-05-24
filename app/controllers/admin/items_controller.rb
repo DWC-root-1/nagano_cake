@@ -6,8 +6,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    if item.save
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to admin_item_path(item.id)
     else
       render :new
@@ -16,12 +16,10 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def edit
     @item = Item.find(params[:id])
-    @genres = Genre.all
   end
 
   def show
@@ -29,8 +27,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    if item.update(item_params)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to admin_item_path(item.id)
     else
       render :edit
@@ -40,8 +38,6 @@ class Admin::ItemsController < ApplicationController
   # ストロングパラメータ
   private
   def item_params
-    genre_id = params[:item][:genre]  # フォームから送られてきたgenreのidを取得
-    genre = Genre.find(genre_id)  # 取得したidを使ってGenreオブジェクトを取得
-    params.require(:item).permit(:item_image, :name, :introduction, :price, :is_active).merge(genre: genre)
+    params.require(:item).permit(:genre_id, :item_image, :name, :introduction, :price, :is_active)
   end
 end

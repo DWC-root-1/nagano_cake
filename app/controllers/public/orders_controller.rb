@@ -27,21 +27,26 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
+    if @order.save
     @cart_items = current_customer.cart_items.all
 
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.order_id = @order.id
-      @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.with_tax_price
-      @order_details.amount = cart_item.amount
-      @order_details.making_status = 0
-      @order_details.save
+      @cart_items.each do |cart_item|
+        @order_details = OrderDetail.new
+        @order_details.order_id = @order.id
+        @order_details.item_id = cart_item.item.id
+        @order_details.price = cart_item.item.with_tax_price
+        @order_details.amount = cart_item.amount
+        @order_details.making_status = 0
+        @order_details.save
+      end
+      CartItem.destroy_all
+      redirect_to complete_orders_path
+    else
+      @cart_items = current_customer.cart_items
+      @shipping_cost = 800
+      @total_price = 0
+      render 'confirm'
     end
-
-    CartItem.destroy_all
-    redirect_to complete_orders_path
   end
 
   def complete

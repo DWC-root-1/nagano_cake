@@ -22,7 +22,7 @@
         <div class="ml-4">
           <b>お届け先</b>
           <div class="ml-4 mb-3">
-            <%= f.radio_button :select_address, 0, checked: true %>
+            <%= f.radio_button :select_address, 0, checked: true  %>
             <%= f.label :address, "ご自身の住所" %>
             <div class="ml-4">
               〒<%= current_customer.post_code + " " + current_customer.address %></br>
