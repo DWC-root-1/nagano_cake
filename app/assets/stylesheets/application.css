@@ -29,7 +29,7 @@
   height: 150px;
 }
 
-#item_genre {
+#item_genre_id {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
   width: 75%;
@@ -45,4 +45,11 @@
 
 .flash-message.alert {
   color: #FF0000;
+
+#order_status {
+  width: 50%;
+}
+
+#order_detail_making_status {
+  width: 50%;
 }
