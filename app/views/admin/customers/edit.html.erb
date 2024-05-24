@@ -4,6 +4,7 @@
       <h3 class="col-5 my-5 bg-light"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
 
       <div class="col-sm-12 col-md-10 col-lg-8">
+      <%= render 'layouts/error', object: @customer %>
 
         <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
 

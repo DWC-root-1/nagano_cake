@@ -69,6 +69,7 @@ class Public::OrdersController < ApplicationController
   def cartitem_nill
     cart_items = current_customer.cart_items
     if cart_items.blank?
+      flash[:alert] = "カートに商品を追加してください。"
       redirect_to cart_items_path
     end
   end

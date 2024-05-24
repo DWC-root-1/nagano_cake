@@ -35,6 +35,17 @@
   width: 75%;
 }
 
+.flash-message {
+  margin: 3px 10px;
+}
+
+.flash-message.notice {
+  color: #009933;
+}
+
+.flash-message.alert {
+  color: #FF0000;
+
 #order_status {
   width: 50%;
 }

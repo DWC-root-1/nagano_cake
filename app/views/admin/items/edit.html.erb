@@ -2,10 +2,10 @@
   <div class="row py-4">
     <div class="col-3 offset-1 bg-light text-center">
       <h3>商品編集</h3>
-      <%= render 'layouts/error', object: @item %>
 
     </div>
   </div>
+  <%= render 'layouts/error', object: @item %>
 
   <div class="row">
     <div class="col">
@@ -45,7 +45,7 @@
       </table>
 
       <div class="mx-auto col-2">
-        <%= f.submit '新規登録', class: "btn btn-success col py-3 my-4", style: "font-weight: bold; font-size: 18px;" %>
+        <%= f.submit '変更を保存', class: "btn btn-success col py-3 my-4", style: "font-weight: bold; font-size: 18px;" %>
 
       </div>
     </div>
