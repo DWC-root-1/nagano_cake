@@ -7,8 +7,8 @@
   <div class="row">
     <div class="col-8">
       <%= render 'layouts/error', object: @order %>
-      <table class="table-bordered">
-        <tr>
+      <table class="table table-bordered">
+        <tr class="bg-light">
           <td scope="col" style="width: 30%;">商品名　　　　　　　　　　　　</td>
           <td scope="col" style="width: 20%;">単価</td>
           <td scope="col" style="width: 20%;">数量</td>
@@ -18,7 +18,7 @@
         <% @total_price = 0 %>
         <% @cart_items.each do |cart_item| %>
 
-        <tr>
+        <tr class="table-sm">
           <td>
             <%= image_tag cart_item.item.get_item_image(90, 90) %><%= cart_item.item.name %>
           </td>
@@ -31,8 +31,8 @@
       </table>
     </div>
     <div class="col-3 offset-md-1">
-      <table class="table-bordered">
-        <tr>
+      <table class="table table-bordered">
+        <tr class="bg-light">
           <td>送料　　　　　</td>
           <td><%= @shipping_cost %>　　　　　</td>
         </tr>
