@@ -24,19 +24,28 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    redirect_to request.referer
+    if cart_item.update(cart_item_params)
+      redirect_to request.referer
+    else
+      render 'index'
+    end
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
-    cart_item.destroy
+    if cart_item.destroy
     redirect_to request.referer
+    else
+      render 'index'
+    end
   end
 
   def destroy_all
-    current_customer.cart_items.destroy_all
+    if current_customer.cart_items.destroy_all
     redirect_to request.referer
+    else
+      render 'index'
+    end
   end
 
   private
