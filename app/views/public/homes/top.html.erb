@@ -13,6 +13,7 @@
     </div>
   </div>
   <div class-"row">
+    <h3 class="ml-3 mb-3"><b>新着商品</b></h3>
     <div class="d-flex flex-wrap">
       <% @items.each do |item| %>
         <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>

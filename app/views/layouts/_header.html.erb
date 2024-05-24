@@ -1,14 +1,19 @@
 <header>
   <div class="container">
     <div class="row border-bottom">
-      <div class="col d-flex mt-3">
-        <a class="navbar-brand" href="/"><span class="h1 text-dark">NAGANO CAKE</span></a>
+      <div class="col d-flex mt-4">
+        <a class="navbar-brand" href="/">
+          <span class="h1 text-dark" style='font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;'>
+            NAGANO CAKE
+          </span>
+        </a>
 
         <% if admin_signed_in? %>
-          <!-- 4行目のcolに対する</div> -->
+      <!-- 4行目のcolに対する</div> -->
       </div>
+        <div class="col-6">
           <!-- admin側のheaderを記述 -->
-          <ul class="nav justify-content-end my-4">
+          <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
             <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-dark" %>
             </li>
@@ -27,10 +32,11 @@
           </ul>
         <% elsif customer_signed_in? %>
         <!-- publicログイン状態のheaderを記述 -->
-          <div class="ml-5 mt-4">ようこそ、<%= current_customer.last_name %>さん!</div>
+          <div class="ml-4 mt-4">ようこそ、<%= current_customer.last_name %>さん!</div>
       <!-- 4行目のcolに対する</div> -->
       </div>
-          <ul class="nav justify-content-end my-4">
+        <div class="col-6">
+          <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
               <%= link_to "マイページ", my_page_path, class:"btn btn-outline-dark" %>
             </li>
@@ -48,21 +54,31 @@
       <!-- 4行目のcolに対する</div> -->
       </div>
           <!-- ログインしていない場合のheaderを記述 -->
-          <ul class="nav justify-content-end my-4">
-            <li class="nav-item ml-4">
-              <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
-            </li>
-            <li class="nav-item ml-4">
-              <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
-            </li>
-            <li class="nav-item ml-4">
-              <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
-            </li>
-            <li class="nav-item ml-4">
-              <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
+          <div class="col-6">
+            <ul class="nav justify-content-end my-3">
+              <li class="nav-item ml-4">
+                <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
+              </li>
+              <li class="nav-item ml-4">
+                <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
+              </li>
+              <li class="nav-item ml-4">
+                <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
+              </li>
+              <li class="nav-item ml-4">
+                <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>
+              </li>
+            </ul>
+          <% end %>
+
+          <!-- 検索機能なしの検索窓 -->
+          <div class="search offset-6 mb-3">
+            <%= form_with(url: "#", scope: :post, local: true) do |f| %>
+              <%= f.text_field :search, placeholder: 'Search', class: "w-100" %>
+              <% f.submit %>
+            <% end %>
+          </div>
+        </div>
     </div>
+  </div>
 </header>

@@ -1,7 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h3 class="my-5">配送先登録/一覧</h3>
+  <div class="row py-4 pr-3">
+    <div class="col-4 offset-1 bg-light text-center">
+      <h3 class="my-1">配送先登録/一覧</h3>
+    </div>
+  </div>
+</div>
       <div class="col-sm-12 col-md-10 col-lg-8">
         <%= form_with model: @address,url: addresses_path, method: :post do |f| %>
           <table class="table table-borderless">
@@ -10,7 +13,7 @@
                 <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
               </td>
               <td>
-                <%= f.text_field :post_code, placeholder: '0000000' %>
+                <%= f.text_field :post_code, placeholder: '0000000', class: "form-control" %>
               </td>
             </tr>
             <tr>
@@ -18,7 +21,7 @@
                 <%= f.label :address, "住所" %>
               </td>
               <td>
-                <%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0' %>
+                <%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0', class: "form-control", style: "colspan: 3;" %>
               </td>
             </tr>
                 <tr>
@@ -26,7 +29,7 @@
                 <%= f.label :name, "宛名" %>
               </td>
               <td>
-                <%= f.text_field :name, placeholder: '令和道子' %>
+                <%= f.text_field :name, placeholder: '令和道子', class: "form-control" %>
               </td>
               <td>
                 <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
@@ -36,9 +39,11 @@
           </table>
         <% end %>
 
-        <table>
+    <div class="row mt-5">
+      <div class="col-12">
+        <table class="table table-bordered">
           <thead>
-            <tr>
+            <tr class="bg-light">
               <th>郵便番号</th>
               <th>住所</th>
               <th>宛名</th>
@@ -53,7 +58,7 @@
                 <td><%= address.name %></td>
                 <% if address.customer_id == current_customer.id %>
                 <td>
-                  <%= link_to '編集する', edit_address_path(address), class:"btn btn-sm btn-success" %>
+                  <%= link_to '編集する', edit_address_path(address), class:"mx-2 btn btn-sm btn-success" %>
                   <%= link_to '削除する', address_path(address), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
                 </td>
                 <% end %>
@@ -62,6 +67,3 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-</div>

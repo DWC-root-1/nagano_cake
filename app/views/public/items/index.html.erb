@@ -12,7 +12,7 @@
     <div class="col">
       <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
-          <div class="mr-3">
+          <div class="mr-2">
             <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
               <%= image_tag item.get_item_image(260, 180), class: "mb-2" %><br />
               <div class="mb-2">
