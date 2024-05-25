@@ -1,17 +1,15 @@
-<header style="background-color: #6c3524;">
+<header style="background-color: #7B3C15;">
   <div class="container">
     <div class="row border-bottom">
       <div class="col d-flex mt-4">
         <a class="navbar-brand" href="/">
-          <span class="h1" style='font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif; color: #fff;'>
-            NAGANO CAKE
-          </span>
+          <%= image_tag "nagano_cake_logo1.png", size: "350x150" %>
         </a>
 
         <% if admin_signed_in? %>
       <!-- 4行目のcolに対する</div> -->
       </div>
-        <div class="col-7">
+        <div class="col-6">
           <!-- admin側のheaderを記述 -->
           <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
@@ -32,11 +30,11 @@
           </ul>
         <% elsif customer_signed_in? %>
         <!-- publicログイン状態のheaderを記述 -->
-          <div class="ml-4 mt-4 text-light">ようこそ、<%= current_customer.last_name %>さん!</div>
+          <div class="ml-1 mt-5 text-light">ようこそ、<%= current_customer.last_name %>さん!</div>
       <!-- 4行目のcolに対する</div> -->
       </div>
         <div class="col-6">
-          <ul class="nav justify-content-end my-3">
+          <ul class="nav justify-content-end mt-5 my-4">
             <li class="nav-item ml-4">
               <%= link_to "マイページ", my_page_path, class:"btn btn-outline-light" %>
             </li>
