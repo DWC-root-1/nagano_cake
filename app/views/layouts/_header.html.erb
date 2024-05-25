@@ -32,7 +32,7 @@
           </ul>
         <% elsif customer_signed_in? %>
         <!-- publicログイン状態のheaderを記述 -->
-          <div class="ml-4 mt-4">ようこそ、<%= current_customer.last_name %>さん!</div>
+          <div class="ml-4 mt-4 text-light">ようこそ、<%= current_customer.last_name %>さん!</div>
       <!-- 4行目のcolに対する</div> -->
       </div>
         <div class="col-6">
@@ -71,30 +71,35 @@
             </ul>
           <% end %>
 
-          <!-- 検索機能なしの検索窓 -->
           <div class="search offset-6 mb-3">
             <% if admin_signed_in? %>
+            <ul class="list-unstyled">
               <li class="nav-item col-md-4">
                 <div class="search_form">
                   <%= form_with url: admin_search_search_path, method: :get, class: "d-flex" do |f| %>
                     <%= f.text_field :word, placeholder: 'Search' %>
                     <%= f.hidden_field :range, value: "商品" %>
                     <%= f.hidden_field :search, value: "partial" %>
-                    <%= f.submit "検索", class: "btn btn-outline-success" %>
+                    <%= f.submit "検索", class: "btn btn-outline-light" %>
                   <% end %>
                 </div>
               </li>
+            </ul>
+
             <% else %>
+            <ul class="list-unstyled">
               <li class="nav-item col-md-4">
                 <div class="search_form">
                   <%= form_with url: public_search_search_path, method: :get, class: "d-flex" do |f| %>
                     <%= f.text_field :word, placeholder: 'Search' %>
                     <%= f.hidden_field :range, value: "商品" %>
                     <%= f.hidden_field :search, value: "partial" %>
-                    <%= f.submit "検索", class: "btn btn-outline-success" %>
+                    <%= f.submit "検索", class: "btn btn-outline-light" %>
                   <% end %>
                 </div>
               </li>
+            </ul>
+
             <% end %>
           </div>
         </div>
