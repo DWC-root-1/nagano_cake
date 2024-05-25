@@ -49,7 +49,7 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row py-4">
     <h4 class="mr-3" style="font-weight: bold;">支払い方法</h4>
     <p style="font-size: 20px;"><%= @order.payment_method_i18n %></p>
@@ -59,7 +59,7 @@
     <p style="font-size: 20px;">〒<%= @order.address %><br/>
         <%= @order.name %></p>
   </div>
-  
+
   <div class="row justify-content-center">
     <%= form_with model: @order , url: orders_path, method: :post do |f| %>
       <%= f.hidden_field :customer_id, value: current_customer.id %>

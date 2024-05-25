@@ -21,4 +21,10 @@ class Item < ApplicationRecord
     end
     item_image.variant(resize_to_fill: [width, height]).processed
   end
+
+  def self.looks(search, word)
+    if search == "partial"
+      @item = Item.where("name LIKE?","%#{word}%")
+    end
+  end
 end

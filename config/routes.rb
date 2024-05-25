@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'search/search'
+  end
+  namespace :admin do
+    get 'search/search'
+  end
     devise_for :customers,skip: [:passwords], controllers: {
       registrations: "public/registrations",
       sessions: 'public/sessions'
@@ -24,9 +30,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :new, :create, :show] do
       collection do
         get 'complete'
+        post 'confirm'
       end
+    get "search" => "searches#search"
     end
-    post 'orders/confirm' => 'orders#confirm'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
@@ -39,4 +46,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
+  get "search" => "searches#search"
 end
