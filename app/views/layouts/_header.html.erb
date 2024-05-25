@@ -1,9 +1,9 @@
-<header>
+<header style="background-color: #6c3524;">
   <div class="container">
     <div class="row border-bottom">
       <div class="col d-flex mt-4">
         <a class="navbar-brand" href="/">
-          <span class="h1 text-dark" style='font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;'>
+          <span class="h1" style='font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif; color: #fff;'>
             NAGANO CAKE
           </span>
         </a>
@@ -11,23 +11,23 @@
         <% if admin_signed_in? %>
       <!-- 4行目のcolに対する</div> -->
       </div>
-        <div class="col-6">
+        <div class="col-7">
           <!-- admin側のheaderを記述 -->
           <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
-            <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-dark" %>
+            <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-dark" %>
+              <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "注文履歴", admin_root_path, class:"btn btn-outline-dark" %>
+              <%= link_to "注文履歴", admin_root_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-dark" %>
+              <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-dark" %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-light" %>
             </li>
           </ul>
         <% elsif customer_signed_in? %>
@@ -38,16 +38,16 @@
         <div class="col-6">
           <ul class="nav justify-content-end my-3">
             <li class="nav-item ml-4">
-              <%= link_to "マイページ", my_page_path, class:"btn btn-outline-dark" %>
+              <%= link_to "マイページ", my_page_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
+              <%= link_to "商品一覧", items_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "カート", cart_items_path, class:"btn btn-outline-dark" %>
+              <%= link_to "カート", cart_items_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav-item ml-4">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-dark" %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-light" %>
             </li>
           </ul>
         <% else %>
@@ -57,16 +57,16 @@
           <div class="col-6">
             <ul class="nav justify-content-end my-3">
               <li class="nav-item ml-4">
-                <%= link_to "About", about_path, class:"btn btn-outline-dark" %>
+                <%= link_to "About", about_path, class:"btn btn-outline-light" %>
               </li>
               <li class="nav-item ml-4">
-                <%= link_to "商品一覧", items_path, class:"btn btn-outline-dark" %>
+                <%= link_to "商品一覧", items_path, class:"btn btn-outline-light" %>
               </li>
               <li class="nav-item ml-4">
-                <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-dark" %>
+                <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-light" %>
               </li>
               <li class="nav-item ml-4">
-                <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-dark" %>
+                <%= link_to "ログイン", customer_session_path, class:"btn btn-outline-light" %>
               </li>
             </ul>
           <% end %>
@@ -74,29 +74,28 @@
           <!-- 検索機能なしの検索窓 -->
           <div class="search offset-6 mb-3">
             <% if admin_signed_in? %>
-            <li class="nav-item col-md-4">
-              <div class="search_form">
-                <%= form_with url: admin_search_search_path, method: :get, class: "d-flex" do |f| %>
-                <%= f.text_field :word, placeholder: 'Search' %>
-                <%= f.hidden_field :range, value: "商品" %>
-                <%= f.hidden_field :search, value: "partial" %>
-                <%= f.submit "検索", class: "btn btn-outline-success" %>
-              <% end %>
-              </div>
-            </li>
+              <li class="nav-item col-md-4">
+                <div class="search_form">
+                  <%= form_with url: admin_search_search_path, method: :get, class: "d-flex" do |f| %>
+                    <%= f.text_field :word, placeholder: 'Search' %>
+                    <%= f.hidden_field :range, value: "商品" %>
+                    <%= f.hidden_field :search, value: "partial" %>
+                    <%= f.submit "検索", class: "btn btn-outline-success" %>
+                  <% end %>
+                </div>
+              </li>
             <% else %>
-            <li class="nav-item col-md-4">
-              <div class="search_form">
-                <%= form_with url: public_search_search_path, method: :get, class: "d-flex" do |f| %>
-                <%= f.text_field :word, placeholder: 'Search' %>
-                <%= f.hidden_field :range, value: "商品" %>
-                <%= f.hidden_field :search, value: "partial" %>
-                <%= f.submit "検索", class: "btn btn-outline-success" %>
-              <% end %>
-              </div>
-            </li>
+              <li class="nav-item col-md-4">
+                <div class="search_form">
+                  <%= form_with url: public_search_search_path, method: :get, class: "d-flex" do |f| %>
+                    <%= f.text_field :word, placeholder: 'Search' %>
+                    <%= f.hidden_field :range, value: "商品" %>
+                    <%= f.hidden_field :search, value: "partial" %>
+                    <%= f.submit "検索", class: "btn btn-outline-success" %>
+                  <% end %>
+                </div>
+              </li>
             <% end %>
-
           </div>
         </div>
     </div>

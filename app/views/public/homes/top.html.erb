@@ -18,9 +18,9 @@
       <% @items.each do |item| %>
         <%= link_to item_path(item.id), class: "text-decoration-none w-25" do %>
           <div class="card m-2 p-1 card-hover">
-            <%= image_tag item.get_item_image(200, 200) %>
+            <%= image_tag item.get_item_image(220, 150) %>
             <div class="card-body text-body">
-              <h5 class="card-title text-primary"><%= item.name.truncate(13) %></h5>
+              <h5 class="card-title text-primary"><%= item.name.truncate(11) %></h5>
               <p class="card-text text-primary">¥<%= item.price %></p>
             </div>
           </div>
