@@ -1,8 +1,8 @@
 # README
 
-![nagano cake_logo2](https://github.com/DWC-root-1/nagano_cake/assets/163057625/e6c62ef0-83e5-4eba-a8f5-4cc3f456acd3)
-
 [![Image from Gyazo](https://i.gyazo.com/3d211f1667a4a425a00cb2a640fb7dbc.jpg)](https://gyazo.com/3d211f1667a4a425a00cb2a640fb7dbc)
+
+![nagano cake_logo2](https://github.com/DWC-root-1/nagano_cake/assets/163057625/e6c62ef0-83e5-4eba-a8f5-4cc3f456acd3)
 
 ## サービスの概要・背景
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト。
