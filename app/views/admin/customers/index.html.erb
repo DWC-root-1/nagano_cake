@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row py-4 pr-3">
+    <div class="col-2 offset-1 bg-light text-center">
+      <h3>会員一覧</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <table class='table table-hover table-inverse border-bottom'>
+        <tr>
+          <th class="bg-light">会員ID</th>
+          <th class="bg-light">氏名</th>
+          <th class="bg-light">メールアドレス</th>
+          <th class="bg-light">ステータス</th>
+        </tr>
+
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to "#{customer.last_name}#{customer.first_name}", admin_customer_path(customer), style: "color: black; border-bottom: solid 1px" %></td>
+          <td><%= customer.email %></td>
+          <% if customer.is_active %>
+            <td class="text-success"><b>有効</b></td>
+          <% else %>
+            <td class="text-secondary"><b>退会</b></td>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <!-- 1ページ当たりの表示数が10個のペネトレーション設定 -->
+  <%= paginate @customers %>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row py-4 pr-3">
+    <div class="col-3 offset-1 bg-light text-center">
+      <h3>配送先編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @address,url: address_path(@address), method: :patch do |f| %>
+        <table class="table table-borderless col-10">
+          <tr>
+            <td class="col-3"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
+            <td><%= f.text_field :post_code %></td>
+          </tr>
+          <tr>
+            <td class="col-3"><%= f.label :address, "住所" %></td>
+            <td style="width: 45%"><%= f.text_field :address, class: "w-100" %></td>
+          </tr>
+          <tr>
+            <td class="col-3"><%= f.label :name, "宛名" %></td>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit '変更内容を保存', class: "btn btn-sm btn-success ml-5" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

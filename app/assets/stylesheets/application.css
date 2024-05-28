@@ -13,3 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination span {
+  margin: 0 0.5rem 3rem;
+}
+
+#cart_item_amount {
+  padding: 7px 20px;
+  margin-right: 20px;
+  background-color: #ffc1cc;
+}
+
+#item_introduction {
+  height: 150px;
+}
+
+#item_genre_id {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  width: 75%;
+}
+
+.flash-message {
+  margin: 3px 10px;
+}
+
+.flash-message.notice {
+  color: #009933;
+}
+
+.flash-message.alert {
+  color: #FF0000;
+
+#order_status {
+  width: 50%;
+}
+
+#order_detail_making_status {
+  width: 50%;
+}

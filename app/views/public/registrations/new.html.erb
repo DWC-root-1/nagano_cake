@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="col-3 my-5 bg-light">新規会員登録</h3>
+
+        <div class="col-sm-12 col-md-10 col-lg-8 px-sm-0 mx-auto">
+          <%= render "public/shared/error_messages", resource: resource %>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <table class="table table-borderless">
+              <tr>
+                <td>名前</td>
+                <td><%= f.text_field :last_name, class:"form-control", placeholder: "令和" %></td>
+                <td><%= f.text_field :first_name, class: "form-control", placeholder: "道子" %></td>
+              </tr>
+
+              <tr>
+                <td>フリガナ</td>
+                <td><%= f.text_field :last_name_kana, class:"form-control", placeholder: "レイワ" %></td>
+                <td><%= f.text_field :first_name_kana, class:"form-control", placeholder: "ミチコ" %></td>
+              </tr>
+
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "sample@example.com" %></td>
+              </tr>
+
+              <tr>
+                <td>郵便番号(ハイフンなし)</td>
+                <td><%= f.text_field :post_code, class:"form-control", placeholder: "0000000" %></td>
+              </tr>
+
+              <tr>
+                <td>住所</td>
+                <td colspan="2"><%= f.text_field :address, class:"form-control", placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+              </tr>
+
+              <tr>
+                <td>電話番号(ハイフンなし)</td>
+                <td><%= f.text_field :telephone_number, class:"form-control", placeholder: "00000000000" %></td>
+              </tr>
+
+              <tr>
+                <td>パスワード(<%= @minimum_password_length %>文字以上)</td>
+                <td><%= f.password_field :password, autocomplete: "new-password", class:"form-control" %></td>
+              </tr>
+
+              <tr>
+                <td>パスワード(確認用)</td>
+                <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %></td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td><%= f.submit "新規会員登録" , class: "btn btn-success px-5"%></td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+
+        <div class="col m-5">
+          <h3 class="col-3 my-3 bg-light">既に登録済みの方</h3>
+        <div class="mx-5">
+          <%= link_to "こちら", new_customer_session_path %>　からログインしてください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

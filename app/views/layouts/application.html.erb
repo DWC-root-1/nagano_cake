@@ -7,10 +7,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="background-color: #FFFFF0;">
+    <%= render partial: 'layouts/header' %>
+      <div class="container">
+        <div class="row">
+          <% flash.each do |message_type, message| %>
+          <div class="col flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
+        </div>
+      <main>
+        <%= yield %>
+      </main>
   </body>
 </html>

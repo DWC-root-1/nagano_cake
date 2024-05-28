@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="d-flex mb-4" style="align-items: end;">
+        <h2 class="mb-0"><b>商品一覧</b></h2>
+        <h5 class="mb-1 ml-1"> (全<%= @item_count %>件)</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <div class="mr-2">
+            <%= link_to item_path(item.id), class: "text-decoration-none text-dark" do %>
+              <%= image_tag item.get_item_image(260, 180), class: "mb-2" %><br />
+              <div class="mb-2">
+                <%= item.name.truncate(13) %>
+              </div>
+            <% end %>
+
+            <div class="mb-5">
+              ¥<%= number_with_delimiter(item.price) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1ページ当たりの表示数が8個のペネトレーション設定 -->
+  <div class="mb-5">
+    <%= paginate @items %>
+  </div>
+</div>

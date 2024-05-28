@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col offset-1">
+      <h3 class="col-3 my-4 bg-light text-center">注文情報入力</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+        <div class="ml-4 mb-3">
+          <b style="font-size:22px;">支払方法</b>
+          <div class="ml-4">
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true  %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+            <br />
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+          </div>
+        </div>
+
+        <div class="ml-4">
+          <b style="font-size: 22px;">お届け先</b>
+          <div class="ml-4 mb-3">
+            <%= f.radio_button :select_address, 0, checked: true  %>
+            <%= f.label :address, "ご自身の住所" %>
+            <div class="ml-4">
+              〒<%= current_customer.post_code + " " + current_customer.address %></br>
+              <%= current_customer.last_name + current_customer.first_name %>
+            </div>
+          </div>
+
+          <div class="ml-4 mb-3">
+            <%= f.radio_button :select_address, 1 %>
+            <%= f.label :address, "登録済住所から選択" %></br>
+            <div class="ml-4">
+              <!-- セレクトボックスの横幅が広がらん! なんでや〜!! -->
+              <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display), class: "mb-3", style: "width: 200%" %>
+            </div>
+          </div>
+
+          <div class="ml-4">
+            <%= f.radio_button :select_address, 2 %>
+            <%= f.label :addres, "新しいお届け先", style: "margin-bottom: 0;" %>
+            <div class="ml-4">
+              <table>
+                <tr>
+                  <td>郵便番号(ハイフンなし)</td>
+                  <td><%= f.text_field :post_code, placeholder: "0000000", class: "mb-2 ml-3" %></td>
+                </tr>
+                <tr>
+                  <td>住所</td>
+                  <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "mb-2 ml-3", style: "width: 220%;" %></td>
+                </tr>
+                <tr>
+                  <td>宛名</td>
+                  <td><%= f.text_field :name, placeholder: "令和道子", class: "mb-2 ml-3" %></td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="text-center my-3">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
